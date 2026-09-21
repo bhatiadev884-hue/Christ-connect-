@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ext-gd": "*",
+        "phpmailer/phpmailer": "^6.11"
+    }
+}
