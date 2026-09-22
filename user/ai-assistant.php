@@ -6,6 +6,26 @@ if (empty($_SESSION['id_user'])) {
 }
 require_once("../db.php");
 
+if (!function_exists('safe_trim_width')) {
+    function safe_trim_width($string, $start, $width, $trimmarker = '...') {
+        $string = (string)($string ?? '');
+        if (function_exists('mb_strimwidth')) {
+            return mb_strimwidth($string, $start, $width, $trimmarker);
+        }
+        if (strlen($string) <= $width) {
+            return $string;
+        }
+        $markerLen = strlen($trimmarker);
+        return substr($string, $start, max(0, $width - $markerLen)) . $trimmarker;
+    }
+}
+
+if (!function_exists('mb_strimwidth')) {
+    function mb_strimwidth($string, $start, $width, $trimmarker = '') {
+        return safe_trim_width($string, $start, $width, $trimmarker);
+    }
+}
+
 $uid = (int)$_SESSION['id_user'];
 $uQ  = $conn->query("SELECT * FROM users WHERE id_user='$uid'");
 $user = $uQ ? $uQ->fetch_assoc() : [];
