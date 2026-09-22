@@ -4,14 +4,11 @@ if (empty($_SESSION['id_user'])) {
     header("Location: ../index.php");
     exit();
 }
-require_once("../db.php");
+require_once(__DIR__ . "/../db.php");
 
 if (!function_exists('safe_trim_width')) {
     function safe_trim_width($string, $start, $width, $trimmarker = '...') {
         $string = (string)($string ?? '');
-        if (function_exists('mb_strimwidth')) {
-            return mb_strimwidth($string, $start, $width, $trimmarker);
-        }
         if (strlen($string) <= $width) {
             return $string;
         }
@@ -424,7 +421,7 @@ $ug        = htmlspecialchars($user['ug'] ?? '');
       <?php if ($ug): ?>
         <div class="p-detail">Academic Score: <?= $ug ?>%</div>
       <?php endif; ?>
-      <div class="p-badge"><span>●</span> Skills: <?= mb_strimwidth($skills, 0, 30, '...') ?></div>
+      <div class="p-badge"><span>●</span> Skills: <?= safe_trim_width($skills, 0, 30, '...') ?></div>
     </div>
 
     <!-- Navigation -->
@@ -484,7 +481,7 @@ $ug        = htmlspecialchars($user['ug'] ?? '');
         <span class="w-icon">🤖</span>
         <div>
           <h3>Hello <?= $firstName ?>! I'm your PlaceMentor AI Career Advisor</h3>
-          <p>I know your profile — <strong><?= $qual ?><?= $stream ? ' in ' . $stream : '' ?></strong>, Score: <strong><?= $ug ?: 'N/A' ?></strong>, Skills: <strong><?= mb_strimwidth($skills, 0, 60, '...') ?></strong>. Ask me anything about your placement journey!</p>
+          <p>I know your profile — <strong><?= $qual ?><?= $stream ? ' in ' . $stream : '' ?></strong>, Score: <strong><?= $ug ?: 'N/A' ?></strong>, Skills: <strong><?= safe_trim_width($skills, 0, 60, '...') ?></strong>. Ask me anything about your placement journey!</p>
         </div>
       </div>
 
