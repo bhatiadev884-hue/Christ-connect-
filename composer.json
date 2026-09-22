@@ -1,6 +1,8 @@
 {
     "require": {
-        "ext-gd": "*",
         "phpmailer/phpmailer": "^6.11"
+    },
+    "config": {
+        "platform-check": false
     }
 }
