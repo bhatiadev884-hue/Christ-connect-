@@ -82,7 +82,7 @@ if ($checkC->num_rows == 0) {
         ('Dr. Priya Sharma', 'Christ University Placement Cell', 'India', 'Delhi', 'Delhi',
          '9988776655', 'https://ncr.christuniversity.in/', '$c_email', '$c_password',
          'Official Placement Cell of Christ University NCR Campus. We connect students with top recruiters.',
-         '', '1')";
+         'default_logo.png', '1')";
     if ($conn->query($sql)) {
         $created[] = 'company';
     } else {

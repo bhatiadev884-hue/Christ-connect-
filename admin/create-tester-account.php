@@ -52,8 +52,8 @@ if (isset($_POST['create_tester'])) {
         $compName = !empty($name) ? $name : 'Tester Placement Cell';
         $contact  = '9998887776';
         
-        $sql = "INSERT INTO company (name, companyname, country, state, city, contactno, website, email, password, aboutme, active)
-                VALUES ('Tester Officer', '$compName', 'India', 'Delhi', 'Delhi', '$contact', 'https://christccc.edu', '$identifier', '$enc_pass', 'Tester Placement Cell Account created by Admin', '1')";
+        $sql = "INSERT INTO company (name, companyname, country, state, city, contactno, website, email, password, aboutme, logo, active)
+                VALUES ('Tester Officer', '$compName', 'India', 'Delhi', 'Delhi', '$contact', 'https://christccc.edu', '$identifier', '$enc_pass', 'Tester Placement Cell Account created by Admin', 'default_logo.png', '1')";
         
         if ($conn->query($sql)) {
           $msg = "✅ Tester Placement Coordinator account created and activated!";

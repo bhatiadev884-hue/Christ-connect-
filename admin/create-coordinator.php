@@ -6,7 +6,7 @@ if (empty($_SESSION['id_admin'])) {
   exit();
 }
 
-require_once("../db.php");
+require_once(__DIR__ . "/../db.php");
 
 $msg = "";
 $msg_type = "";
@@ -29,8 +29,8 @@ if (isset($_POST['register_coordinator'])) {
   $check = $conn->query("SELECT id_company FROM company WHERE email='$email'");
   if ($check->num_rows == 0) {
     // Insert with active='1' (Directly active when registered by Admin)
-    $sql = "INSERT INTO company (name, companyname, country, state, city, contactno, website, email, password, aboutme, active)
-            VALUES ('$name', '$companyname', '$country', '$state', '$city', '$contactno', '$website', '$email', '$enc_password', '$aboutme', '1')";
+    $sql = "INSERT INTO company (name, companyname, country, state, city, contactno, website, email, password, aboutme, logo, active)
+            VALUES ('$name', '$companyname', '$country', '$state', '$city', '$contactno', '$website', '$email', '$enc_password', '$aboutme', 'default_logo.png', '1')";
 
     if ($conn->query($sql)) {
       $msg = "Placement Cell Coordinator '$companyname' ($email) registered and activated successfully!";
