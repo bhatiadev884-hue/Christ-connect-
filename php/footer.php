@@ -7,7 +7,7 @@
 
             <div class="d-flex flex-column align-items-center align-items-lg-start">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>Gracia Sharon</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>Dev Bhatia</span></strong>. All Rights Reserved
                 </div>
                 <div class="credits">
 
